@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.CQRS.Queries
 {
-    public class GetProductByIdQuery : IRequest<Product>
+    public class GetEmployeeByIdQuery : IRequest<AddEmplyeeDetails>
     {
         public int Id { get; set; }
-        public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product>
+        public class GetProductByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, AddEmplyeeDetails>
         {
-            private ProductContext context;
-            public GetProductByIdQueryHandler(ProductContext context)
+            private EmployeeContext context;
+            public GetProductByIdQueryHandler(EmployeeContext context)
             {
                 this.context = context;
             }
-            public async Task<Product> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
+            public async Task<AddEmplyeeDetails> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
             {
                 var product = await context.Product.Where(a => a.Id == query.Id).FirstOrDefaultAsync();
                 return product;

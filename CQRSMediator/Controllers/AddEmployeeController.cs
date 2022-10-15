@@ -12,10 +12,10 @@ namespace CQRSMediator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class AddEmployeeController : ControllerBase
     {
         private IMediator mediator;
-        public ProductController(IMediator mediator)
+        public AddEmployeeController(IMediator mediator)
         {
             this.mediator = mediator;
         }
@@ -32,19 +32,19 @@ namespace CQRSMediator.Controllers
         [EnableCors("AllowOrigin")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await mediator.Send(new GetAllProductQuery()));
+            return Ok(await mediator.Send(new GetAllEmployeeQuery()));
         }
 
         // URL - https://localhost:44378/api/Product/{id} type GET
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await mediator.Send(new GetProductByIdQuery { Id = id }));
+            return Ok(await mediator.Send(new GetEmployeeByIdQuery { Id = id }));
         }
 
         // URL - https://localhost:44378/api/Product/{id} type PUT
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateProductCommand command)
+        public async Task<IActionResult> Update(int id, UpdateEmployeeCommand command)
         {
             command.Id = id;
             return Ok(await mediator.Send(command));
@@ -54,8 +54,8 @@ namespace CQRSMediator.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await mediator.Publish(new Notifications.DeleteProductNotification { ProductId = id });
-            return Ok(await mediator.Send(new DeleteProductByIdCommand { Id = id }));
+            await mediator.Publish(new Notifications.DeleteEmployeeNotification { ProductId = id });
+            return Ok(await mediator.Send(new DeleteEmployeeByIdCommand { Id = id }));
         }
     }
 }

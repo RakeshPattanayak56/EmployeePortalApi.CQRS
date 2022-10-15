@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.CQRS.Commands
 {
-    public class UpdateProductCommand : IRequest<int>
+    public class UpdateEmployeeCommand : IRequest<int>
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
 
-        public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, int>
+        public class UpdateProductCommandHandler : IRequestHandler<UpdateEmployeeCommand, int>
         {
-            private ProductContext context;
-            public UpdateProductCommandHandler(ProductContext context)
+            private EmployeeContext context;
+            public UpdateProductCommandHandler(EmployeeContext context)
             {
                 this.context = context;
             }
-            public async Task<int> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
+            public async Task<int> Handle(UpdateEmployeeCommand command, CancellationToken cancellationToken)
             {
                 var product = context.Product.Where(a => a.Id == command.Id).FirstOrDefault();
 

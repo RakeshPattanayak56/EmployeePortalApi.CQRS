@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.Models
 {
-    public class Product
+    public class AddEmplyeeDetails
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")]

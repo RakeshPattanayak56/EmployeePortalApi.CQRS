@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.Models
 {
-    public class ProductContext: DbContext
+    public class EmployeeContext: DbContext
     {
-        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
+        public EmployeeContext(DbContextOptions<EmployeeContext> options) : base(options)
         {
         }
 
-        public DbSet<Product> Product { get; set; }
+        public DbSet<AddEmplyeeDetails> Product { get; set; }
     }
 }

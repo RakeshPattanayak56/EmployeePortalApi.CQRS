@@ -25,14 +25,14 @@ namespace CQRSMediator.CQRS.Commands
 
         public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
         {
-            private ProductContext context;
-            public CreateProductCommandHandler(ProductContext context)
+            private EmployeeContext context;
+            public CreateProductCommandHandler(EmployeeContext context)
             {
                 this.context = context;
             }
             public async Task<int> Handle(CreateProductCommand command, CancellationToken cancellationToken)
             {
-                var product = new Product();
+                var product = new AddEmplyeeDetails();
                 product.Name = command.Name;
                 product.Price = command.Price;
 

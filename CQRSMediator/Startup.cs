@@ -31,7 +31,7 @@ namespace CQRSMediator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(Startup));
-            services.AddDbContext<ProductContext>(options =>
+            services.AddDbContext<EmployeeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddControllers();

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.Notifications
 {
-    public class DeleteProductNotification : INotification
+    public class DeleteEmployeeNotification : INotification
     {
         public int ProductId { get; set; }
     }
 
-    public class EmailHandler : INotificationHandler<DeleteProductNotification>
+    public class EmailHandler : INotificationHandler<DeleteEmployeeNotification>
     {
-        public Task Handle(DeleteProductNotification notification, CancellationToken cancellationToken)
+        public Task Handle(DeleteEmployeeNotification notification, CancellationToken cancellationToken)
         {
             int id = notification.ProductId;
             // send email to customers
@@ -22,9 +22,9 @@ namespace CQRSMediator.Notifications
         }
     }
 
-    public class SMSHandler : INotificationHandler<DeleteProductNotification>
+    public class SMSHandler : INotificationHandler<DeleteEmployeeNotification>
     {
-        public Task Handle(DeleteProductNotification notification, CancellationToken cancellationToken)
+        public Task Handle(DeleteEmployeeNotification notification, CancellationToken cancellationToken)
         {
             int id = notification.ProductId;
             //send sms to sales team
