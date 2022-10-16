@@ -29,7 +29,7 @@ namespace CQRSMediator.Controllers
 
         // URL - https://localhost:44378/api/Product type GET
         [HttpGet]
-        [EnableCors("AllowOrigin")]
+        //[EnableCors("AllowOrigin")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await mediator.Send(new GetAllEmployeeQuery()));
