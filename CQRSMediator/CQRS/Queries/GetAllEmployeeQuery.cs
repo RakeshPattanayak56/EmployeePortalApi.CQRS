@@ -11,17 +11,17 @@ namespace CQRSMediator.CQRS.Queries
 {
     public class GetAllEmployeeQuery : IRequest<IEnumerable<AddEmplyeeDetails>>
     {
-        public class GetAllProductQueryHandler : IRequestHandler<GetAllEmployeeQuery, IEnumerable<AddEmplyeeDetails>>
+        public class GetAllEmployeeQueryHandler : IRequestHandler<GetAllEmployeeQuery, IEnumerable<AddEmplyeeDetails>>
         {
             private EmployeeContext context;
-            public GetAllProductQueryHandler(EmployeeContext context)
+            public GetAllEmployeeQueryHandler(EmployeeContext context)
             {
                 this.context = context;
             }
             public async Task<IEnumerable<AddEmplyeeDetails>> Handle(GetAllEmployeeQuery query, CancellationToken cancellationToken)
             {
-                var productList = await context.Product.ToListAsync();
-                return productList;
+                var employeeList = await context.Employee.ToListAsync();
+                return employeeList;
             }
         }
     }

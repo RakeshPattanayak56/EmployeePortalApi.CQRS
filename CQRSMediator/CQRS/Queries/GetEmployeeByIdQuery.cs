@@ -12,17 +12,17 @@ namespace CQRSMediator.CQRS.Queries
     public class GetEmployeeByIdQuery : IRequest<AddEmplyeeDetails>
     {
         public int Id { get; set; }
-        public class GetProductByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, AddEmplyeeDetails>
+        public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, AddEmplyeeDetails>
         {
             private EmployeeContext context;
-            public GetProductByIdQueryHandler(EmployeeContext context)
+            public GetEmployeeByIdQueryHandler(EmployeeContext context)
             {
                 this.context = context;
             }
             public async Task<AddEmplyeeDetails> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
             {
-                var product = await context.Product.Where(a => a.Id == query.Id).FirstOrDefaultAsync();
-                return product;
+                var employee = await context.Employee.Where(a => a.Id == query.Id).FirstOrDefaultAsync();
+                return employee;
             }
         }
     }

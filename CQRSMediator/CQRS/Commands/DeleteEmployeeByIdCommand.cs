@@ -9,22 +9,21 @@ using System.Threading.Tasks;
 
 namespace CQRSMediator.CQRS.Commands
 {
-    public class DeleteEmployeeByIdCommand : IRequest<int>
+    public class DeleteEmployeeByIdCommand : AddEmplyeeDetails,IRequest<int>
     {
-        public int Id { get; set; }
-        public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteEmployeeByIdCommand, int>
+        public class DeleteEmployeeByIdCommandHandler : IRequestHandler<DeleteEmployeeByIdCommand, int>
         {
             private EmployeeContext context;
-            public DeleteProductByIdCommandHandler(EmployeeContext context)
+            public DeleteEmployeeByIdCommandHandler(EmployeeContext context)
             {
                 this.context = context;
             }
             public async Task<int> Handle(DeleteEmployeeByIdCommand command, CancellationToken cancellationToken)
             {
-                var product = await context.Product.Where(a => a.Id == command.Id).FirstOrDefaultAsync();
-                context.Product.Remove(product);
+                var employee = await context.Employee.Where(a => a.Id == command.Id).FirstOrDefaultAsync();
+                context.Employee.Remove(employee);
                 await context.SaveChangesAsync();
-                return product.Id;
+                return employee.Id;
             }
         }
     }

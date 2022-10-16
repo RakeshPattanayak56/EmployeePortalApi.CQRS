@@ -9,14 +9,14 @@ namespace CQRSMediator.Notifications
 {
     public class DeleteEmployeeNotification : INotification
     {
-        public int ProductId { get; set; }
+        public int EmployeeId { get; set; }
     }
 
     public class EmailHandler : INotificationHandler<DeleteEmployeeNotification>
     {
         public Task Handle(DeleteEmployeeNotification notification, CancellationToken cancellationToken)
         {
-            int id = notification.ProductId;
+            int id = notification.EmployeeId;
             // send email to customers
             return Task.CompletedTask;
         }
@@ -26,7 +26,7 @@ namespace CQRSMediator.Notifications
     {
         public Task Handle(DeleteEmployeeNotification notification, CancellationToken cancellationToken)
         {
-            int id = notification.ProductId;
+            int id = notification.EmployeeId;
             //send sms to sales team
             return Task.CompletedTask;
         }

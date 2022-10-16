@@ -12,6 +12,6 @@ namespace CQRSMediator.Models
         {
         }
 
-        public DbSet<AddEmplyeeDetails> Product { get; set; }
+        public DbSet<AddEmplyeeDetails> Employee { get; set; }
     }
 }

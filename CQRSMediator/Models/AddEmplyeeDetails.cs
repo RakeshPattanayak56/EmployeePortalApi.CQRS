@@ -10,9 +10,6 @@ namespace CQRSMediator.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
-        [Range(1, 100, ErrorMessage = "Price must be between $1 and $100")]
-        public string Price { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
@@ -21,6 +18,7 @@ namespace CQRSMediator.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+        [StringLength(12, MinimumLength = 10, ErrorMessage = "Phone no cannot be longer than 12 characters and less than 10 characters")]
         public string PhoneNo { get; set; }
         public string EmailAddress { get; set; }
     }
