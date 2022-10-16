@@ -35,6 +35,16 @@ namespace CQRSMediator.CQRS.Commands
                 var product = new AddEmplyeeDetails();
                 product.Name = command.Name;
                 product.Price = command.Price;
+                product.FirstName = command.FirstName;
+                product.LastName = command.LastName;
+                product.FullName = command.FullName;
+                product.PresentAddress = command.PresentAddress;
+                product.PermanentAddress = command.PermanentAddress;
+                product.City = command.City;
+                product.State = command.State;
+                product.PostalCode = command.PostalCode;
+                product.PhoneNo = command.PhoneNo;
+                product.EmailAddress = command.EmailAddress;
 
                 context.Product.Add(product);
                 await context.SaveChangesAsync();
